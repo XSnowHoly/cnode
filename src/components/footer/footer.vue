@@ -1,7 +1,7 @@
 <template>
     <div class="footer">
         <md-bottom-bar class="barItem-wrapper" >
-            <md-bottom-bar-item  class="wrapper" v-for="item of list">
+            <md-bottom-bar-item  class="wrapper" v-for="(item,index) of list" key="index">
                 <router-link :to="item.path">    
                     <i class="iconfont" :class="[ item.icon, {'active' : item.path == $route.path }]" ></i>
                     <p :class="{'active' : item.path == $route.path }">{{ item.title }}</p>
@@ -44,7 +44,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .footer{
         position:fixed;
         bottom:0;
