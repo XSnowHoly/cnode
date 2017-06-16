@@ -1,10 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1497581786253'); /* IE9*/
-  src: url('iconfont.eot?t=1497581786253#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('iconfont.woff?t=1497581786253') format('woff'), /* chrome, firefox */
-  url('iconfont.ttf?t=1497581786253') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1497581786253#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1497598275556'); /* IE9*/
+  src: url('iconfont.eot?t=1497598275556#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1497598275556') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1497598275556') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1497598275556#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -36,6 +36,8 @@
 .icon-shouye:before { content: "\e604"; }
 
 .icon-yanjing:before { content: "\e681"; }
+
+.icon-zhiding1:before { content: "\e60a"; }
 
 .icon-guanyu:before { content: "\e655"; }
 

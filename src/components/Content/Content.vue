@@ -136,7 +136,7 @@ export default {
                 .top-wrapper{
                         text-align:center;
                         position:absolute;
-                        top:10px;
+                        top:8px;
                         right:20px;
                     .top{
                         position:relative;
@@ -165,10 +165,11 @@ export default {
                     }
                 }
                 .card-title{
-                    margin:15px 0 0 15px;
+                    margin:15px 10px 0 15px;
                     .title{
                         font-weight:bold;
                         font-size:16px;
+                        text-align:justify;
                     }
                 }
             }

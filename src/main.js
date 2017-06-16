@@ -6,6 +6,9 @@ import router from './router'
 import './common/scss/index.scss'
 import VueMaterial from 'vue-material'
 import axios from 'axios'
+import store from './stores/index.js'
+import Vuex from 'vuex'
+
 
 Vue.config.productionTip = false
 Vue.use(VueMaterial)
@@ -14,6 +17,7 @@ Vue.prototype.$http = axios
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   template: '<App/>',
   components: { App }

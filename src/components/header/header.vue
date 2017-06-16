@@ -3,7 +3,7 @@
     <md-bottom-bar class="bar" >
         <md-bottom-bar-item v-for="(item,index) of list" key="index" class="bar-item">
             <router-link :to="item.path">    
-                <p :class="{'active' : item.tab == dealActive }" @click="test">{{ item.title }}</p>
+                <p :class="{'active' : item.tab == dealActive }">{{ item.title }}</p>
             </router-link>
         </md-bottom-bar-item>
     </md-bottom-bar>
@@ -54,12 +54,6 @@ export default {
         }
     },
     methods:{
-        test (){
-            this.$nextTick(()=>{
-                console.log(this.$route)
-                console.log(this.$route.query.tab)
-            })
-        }
     }
 }
 </script>
