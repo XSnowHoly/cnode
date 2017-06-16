@@ -8,7 +8,6 @@ const allModule = {
     actions: {
         getAllData({ commit }, Url) {
             let { url } = Url;
-            console.log(url)
             axios.get(url).then((obj) => {
                 if (obj.status === 200) {
                     commit('handleAllData', obj.data.data)
@@ -21,7 +20,6 @@ const allModule = {
     mutations: {
         handleAllData(state, data) {
             state.allData = [...state.allData, ...data]
-            console.log(state.allData)
         },
         handleAllPage(state) {
             state.allPage++
