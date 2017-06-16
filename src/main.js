@@ -4,12 +4,13 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import './common/scss/index.scss'
-import VueMaterial from 'vue-material' 
+import VueMaterial from 'vue-material'
+import axios from 'axios'
+
 Vue.config.productionTip = false
-
-
 Vue.use(VueMaterial)
 
+Vue.prototype.$http = axios
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

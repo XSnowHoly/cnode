@@ -3,7 +3,7 @@
     <md-bottom-bar class="bar" >
         <md-bottom-bar-item v-for="(item,index) of list" key="index" class="bar-item">
             <router-link :to="item.path">    
-                <p :class="{'active' : item.tab == $route.query.tab }">{{ item.title }}</p>
+                <p :class="{'active' : item.tab == dealActive }" @click="test">{{ item.title }}</p>
             </router-link>
         </md-bottom-bar-item>
     </md-bottom-bar>
@@ -18,8 +18,8 @@ export default {
             list:[
                {
                    title:'全部',
-                   path: '/?tab=all',
-                   tab:'all'
+                   path: '/',
+                   tab:'/'
                },
                {
                    title:'精华',
@@ -42,6 +42,23 @@ export default {
                     tab:'job'
                }
             ]
+        }
+    },
+    computed :{
+        dealActive () {
+            if(!this.$route.query.tab){
+                return '/'
+            }else{
+                return this.$route.query.tab
+            }
+        }
+    },
+    methods:{
+        test (){
+            this.$nextTick(()=>{
+                console.log(this.$route)
+                console.log(this.$route.query.tab)
+            })
         }
     }
 }
@@ -75,11 +92,11 @@ export default {
                                 display:block;
                                 width:60px;
                                 height:2px;
-                                background:red;
+                                background:#ff8201;
                                 border-radius:2px;
                                 position:absolute;
                                 top:55px;
-                                left:-4px;
+                                left:-2px;
                             }
                         }
                     }

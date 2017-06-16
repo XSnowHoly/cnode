@@ -5,16 +5,13 @@ import home from '../components/home/home.vue'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path:'/',
       component: home,
       children:[
-        {
-          path:'*',
-          meta: { auth: false },
-          redirect:'?tab=all'
-        }
+        
       ]
     }
   ]

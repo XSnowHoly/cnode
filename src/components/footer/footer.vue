@@ -1,9 +1,9 @@
 <template>
     <div class="footer">
-        <md-bottom-bar class="barItem-wrapper" >
+        <md-bottom-bar class="barItem-wrapper">
             <md-bottom-bar-item  class="wrapper" v-for="(item,index) of list" key="index">
                 <router-link :to="item.path">    
-                    <i class="iconfont" :class="[ item.icon, {'active' : item.path == $route.path }]" ></i>
+                    <i class="iconfont" :class="[ item.icon, {'active' : item.path == $route.path }]"></i>
                     <p :class="{'active' : item.path == $route.path }">{{ item.title }}</p>
                     <div class="count" v-if="item.path == '/my/messages ' && count > 0">{{ count }}</div>
                 </router-link>
@@ -52,6 +52,7 @@ export default {
         width:100%;
         z-index:50;
         text-align:center;
+        border-top:2px solid #e6e6e6;
         .barItem-wrapper{
             .wrapper{
                 a{
