@@ -1,10 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1497703908833'); /* IE9*/
-  src: url('iconfont.eot?t=1497703908833#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('iconfont.woff?t=1497703908833') format('woff'), /* chrome, firefox */
-  url('iconfont.ttf?t=1497703908833') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1497703908833#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1497714417319'); /* IE9*/
+  src: url('iconfont.eot?t=1497714417319#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1497714417319') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1497714417319') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1497714417319#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -28,6 +28,8 @@
 .icon-iconjiantouleft:before { content: "\e600"; }
 
 .icon-pinglun:before { content: "\e606"; }
+
+.icon-forwarding:before { content: "\e64e"; }
 
 .icon-17:before { content: "\e65f"; }
 

@@ -37,6 +37,40 @@
                         </div>
                     </div>
                     <div v-html="cardData.content" class="html-wrapper"></div>
+                    <div class="reply-wrapper">
+                        <div class="count-wrapper">
+                            <p>共{{cardData.reply_count}}条回复</p>
+                        </div>
+                        <ul>
+                            <li v-for=" (item,index) of  cardData.replies" class="replyPerson-wrapper">
+                                <span class="floor">#{{index}}</span>
+                                <div class="avatar-wrapper">
+                                    <img :src="item.author.avatar_url">
+                                </div>
+                                <div class="name-wrapper">
+                                    <span class="name">{{item.author.loginname}}</span>
+                                </div>
+                                <div class="time-wrapper">
+                                    <span class="time">{{item.create_at | filterTime }}</span>
+                                </div>
+                                <div v-html="item.content"></div>
+                                <div class="icon-wrapper">
+                                    <div class="praise-wrapper">
+                                        <i class="iconfont">&#xe60e;</i>
+                                        <span class="num" v-show="item.ups.length>0">{{item.ups.length}}</span>
+                                    </div>
+                                    <div class="used-wrapper">
+                                        <i class="iconfont" :class="{'active':item.is_uped}">&#xe64e;</i>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="login-wrapper">
+                            <p class="login">
+                                你还未登录，请先<a>登录</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="load-wrapper" v-show="loading">
@@ -115,7 +149,7 @@ export default {
     })
   },
   computed:{
-    createTime () {
+    createTime() {
         let createTime = Date.parse(this.cardData.create_at);
         let nowTime = Date.now();
         let diff = nowTime - createTime;
@@ -126,6 +160,13 @@ export default {
   watch : {
       id () {
         this.getIdData();
+      }
+  },
+  filters : {
+      filterTime(val) {
+        if(!val)return
+        let time = val.split('T')[0]
+        return time
       }
   }
 }
@@ -140,6 +181,7 @@ export default {
         width:100%;
         height:100%;
         background:#fff;
+        padding-bottom:20px;
         transform: translate3d(0, 0, 0);
         &.move-enter-active, &.move-leave-active{
             transition: all .2s linear;
@@ -270,18 +312,26 @@ export default {
                     &>h1{
                         // font-weight:bold;
                         padding-bottom:10px;
-                        font-size:25px;
+                        font-size:28px;
                         line-height:25px;
                         border-bottom:1px solid #e6e6e6;
                         font-weight:bold;      
                     }
                     &>h2{
                         padding:10px 0 10px 0;
-                        font-size:20px;
+                        font-size:23px;
                         line-height:25px; 
                         border-bottom:1px solid #e6e6e6; 
                         font-weight:bold;
                         margin-bottom:10px;                      
+                    }
+                    &>h3{
+                        padding:10px 0 10px 0;
+                        font-size:19px;
+                        line-height:25px; 
+                        border-bottom:1px solid #e6e6e6; 
+                        font-weight:bold;
+                        margin-bottom:10px;                           
                     }
                     &>p{
                         text-align:justify;
@@ -294,17 +344,27 @@ export default {
                         }
                         &>a{
                             color:blue;
-                            text-decoration:none
+                            text-decoration:none;
+                        }
+                        &>code{
+
+                        }
+                        &>strong{
+                            font-weight:bold;
                         }
                     }
                     &>ul{
                         padding-left:10px;
                         margin-bottom:15px;
-                        &>li{
+                        li{
                             margin-top:8px;
                             font-size:15px;
                             line-height:25px;
                             text-align:justify;
+                            a{
+                                color:blue;
+                                text-decoration:none;
+                            }
                         }
                     }
                     &>blockquote{
@@ -314,9 +374,23 @@ export default {
                             font-size:16px;
                             color: #6a737d;
                             border-left: 0.25em solid #dfe2e5;
+                            a{
+                                display:block;
+                                color:blue;
+                                text-decoration:none;
+                            }
+                        }
+                        &>ul{
+                            li{
+                                a{
+                                    color:blue;
+                                    text-decoration:none;
+                                }
+                            }
                         }
                     }
                     &>table{
+                        overflow:auto;
                         display:block;
                         width:100%;
                         thead{
@@ -339,6 +413,55 @@ export default {
                                 }
                             }
                         }
+                    }
+                    &>pre{
+                        padding: 16px;
+                        overflow: auto;
+                        font-size: 85%;
+                        line-height: 1.45;
+                        background-color: #f6f8fa;
+                        border-radius: 3px;  
+                        code{
+                            color:black;
+                            display: inline;
+                            max-width: auto;
+                            padding: 0;
+                            margin: 0;
+                            overflow: visible;
+                            line-height: inherit;
+                            word-wrap: normal;
+                            background-color: transparent;
+                            border: 0;                            
+                        }                      
+                    }
+                    &>ol{
+                        li{
+                            code{
+
+                            }
+                        }
+                    }
+                    &>pre{
+                        code{
+                            font-size:14px;
+                        }
+                    }
+                }
+            }
+        }
+        .reply-wrapper{
+            .count-wrapper{
+                border-top:1px solid #e6e6e6;
+                border-bottom:1px solid #e6e6e6;
+                border-left:5px solid #80bd01;
+                padding:7px 0 7px 5px;
+            }
+            .replyPerson-wrapper{
+                border:1px solid red;
+                .avatar-wrapper{
+                    img{
+                        width:60px;
+                        height:70px;
                     }
                 }
             }
