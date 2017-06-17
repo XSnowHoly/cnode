@@ -83,7 +83,7 @@ export default {
     },
     methods : {
         conso() {
-            console.log(this.cardData)
+            // console.log(this.cardData)
         },
         diffTime (time) {
             let result = time/3000/1000/24/30;
@@ -129,8 +129,8 @@ export default {
                     top:10px;
                     right:50px;
                     .good{
-                        font-size:35px;
-                        color:#e15439;
+                        font-size:32px;
+                        color:#bdd748;
                     }
                 }
                 .top-wrapper{
@@ -141,7 +141,7 @@ export default {
                     .top{
                         position:relative;
                         font-size:28px;
-                        color:#e15439;
+                        color:#bdd748;
                     }
                 }
                 .name{
@@ -190,6 +190,8 @@ export default {
                 .reply-count{
                     flex:1;
                     text-align:center;
+                    border-left:1px solid #e6e6e6;
+                    border-right:1px solid #e6e6e6;
                     i{
                         vertical-align:top;
                     }

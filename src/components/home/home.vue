@@ -7,37 +7,47 @@
                 <div v-if="handleData.length === 0" class="load-wrapper">
                     <md-spinner :md-size="60" md-indeterminate ></md-spinner>
                 </div>
-                <v-Content :cardData="handleData[index]" v-else v-for="(item,index) of handleData" key="index"></v-Content>
+                <div v-else v-for="(item,index) of handleData" key="index" @click="selectCard(item)">
+                    <v-card :cardData="handleData[index]"></v-card>
+                </div>
                 <div v-if="loading" class="loading">
                     <md-spinner :md-size="40" md-indeterminate ></md-spinner>
                 </div>
             </div>    
         </div>
+        <v-cardContent ref="cardContent" :id="selectId"></v-cardContent>
     </div>
   </transition>  
 </template>
 
 <script>
 import header from '../header/header'
-import content from '../content/content'
+import card from '../card/card'
 import BScroll from 'better-scroll'
+import cardContent from '../cardContent/cardContent'
 
 export default {
     data() {
         return {
             data:[],
             page:1,
-            loading:false
+            loading:false,
+            selectId:''
         }
     },
     components:{
         'v-header':header,
-        'v-Content':content
+        'v-card':card,
+        'v-cardContent':cardContent
     },
     mounted () {
        this.initData()
     },
     methods :{
+        selectCard (item){
+            this.selectId = item.id
+            this.$refs.cardContent.toggle()
+        },
         hasData (type) {
             let hasLength
             if(!type){
@@ -60,12 +70,16 @@ export default {
 
         },
         initScroll (){
-            this.cardScroll = new BScroll(this.$refs.cards,{
-                click:true,
-                bounce: true,
-                momentumLimitTime:200,
-                probeType: 3
-            })
+            if(!this.cardScroll){
+                this.cardScroll = new BScroll(this.$refs.cards,{
+                    click:true,
+                    bounce: true,
+                    momentumLimitTime:200,
+                    probeType: 3
+                })
+            }else{
+                this.cardScroll.refresh()
+            }
             this.cardScroll.on('scroll', (pos) => {
                 let cardScroll = Math.abs(this.cardScroll.maxScrollY)+35
                 if(Math.abs(pos.y) > cardScroll && !this.loading){
@@ -181,7 +195,7 @@ export default {
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
     .home{
         position:fixed;
         bottom:65px;

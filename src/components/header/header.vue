@@ -1,11 +1,15 @@
 <template>
     <div class="header">
     <md-bottom-bar class="bar" >
-        <md-bottom-bar-item v-for="(item,index) of list" key="index" class="bar-item">
-            <router-link :to="item.path">    
-                <p :class="{'active' : item.tab == dealActive }">{{ item.title }}</p>
-            </router-link>
-        </md-bottom-bar-item>
+        <div  v-for="(item,index) of list" key="index" class="bar-item" @click="toPath(item.path)">
+            <div class="item">
+                <md-bottom-bar-item>
+                    <div class="title-wrapper">    
+                        <p :class="{'active' : item.tab == dealActive }">{{ item.title }}</p>
+                    </div>
+                </md-bottom-bar-item>
+            </div>
+        </div>
     </md-bottom-bar>
     </div>
 </template>
@@ -54,11 +58,14 @@ export default {
         }
     },
     methods:{
+        toPath (path){
+            this.$router.push(path)
+        }
     }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import '../../common/scss/mixin.scss'; 
 
     .header{
@@ -69,7 +76,7 @@ export default {
         @include border-1px(#e6e6e6);
         .bar{
             .bar-item{
-                a{
+                .title-wrapper{
                     display:inline-block;
                     text-decoration:none;
                     padding:10px;
