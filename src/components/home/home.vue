@@ -38,6 +38,27 @@ export default {
        this.initData()
     },
     methods :{
+        hasData (type) {
+            let hasLength
+            if(!type){
+                hasLength = this.$store.state.allModule.allData.length
+            }
+            if(type === 'good'){
+                hasLength = this.$store.state.goodModule.goodData.length
+            }
+            if(type === 'share'){
+                hasLength = this.$store.state.shareModule.shareData.length
+            }
+            if(type === 'job'){
+                hasLength = this.$store.state.jobModule.jobData.length
+            }
+            if(type === 'ask'){
+                hasLength = this.$store.state.askModule.askData.length
+            }
+            let boll = hasLength>0?true:false
+            return boll
+
+        },
         initScroll (){
             this.cardScroll = new BScroll(this.$refs.cards,{
                 click:true,
@@ -55,16 +76,20 @@ export default {
             })
         },
         initData (type,page) {
-            let url = `https://cnodejs.org/api/v1/topics?page=${this.page}&limit=20`
-            if(type){
-                url = `https://cnodejs.org/api/v1/topics?page=${this.page}&limit=20&tab=${type}`
-            }
-            this.$http.get(url).then(res=>{
-                if(res.status === 200){
-                    let {data} = res.data
-                    this.diffData(type,data)
+            if(this.hasData(type)){
+                this.data = this.$store.state.allModule.allData
+            }else{
+                let url = `https://cnodejs.org/api/v1/topics?page=${this.page}&limit=15`
+                if(type){
+                    url = `https://cnodejs.org/api/v1/topics?page=${this.page}&limit=15&tab=${type}`
                 }
-            })
+                this.$http.get(url).then(res=>{
+                    if(res.status === 200){
+                        let {data} = res.data
+                        this.diffData(type,data)
+                    }
+                })
+            }
         },
         getData () {
             let page
@@ -125,26 +150,26 @@ export default {
     },
     computed :{
         handleData () {
-            let data 
+            // let data 
             let type = this.$route.query.tab
             if(!type){
-              data = this.$store.state.allModule.allData 
+              this.data = this.$store.state.allModule.allData 
             }
             if(type === 'good'){
-              data = this.$store.state.goodModule.goodData 
+              this.data = this.$store.state.goodModule.goodData 
             }
             if(type === 'share'){
-              data = this.$store.state.shareModule.shareData 
+              this.data = this.$store.state.shareModule.shareData 
             }
             if(type === 'ask'){
-               data = this.$store.state.askModule.askData 
+               this.data = this.$store.state.askModule.askData 
             }
             if(type === 'job'){
-                data = this.$store.state.jobModule.jobData 
+                this.data = this.$store.state.jobModule.jobData 
             }            
             this.refreshScroll()
             this.loading = false
-            return data
+            return this.data
         }
     },
     watch : {
