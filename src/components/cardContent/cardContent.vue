@@ -42,8 +42,8 @@
                             <p>共{{cardData.reply_count}}条回复</p>
                         </div>
                         <ul>
-                            <li v-for=" (item,index) of  cardData.replies" class="replyPerson-wrapper">
-                                <span class="floor">#{{index}}</span>
+                            <li v-for=" (item,index) of  cardData.replies" class="replyPerson-wrapper clearfix">
+                                <span class="floor">{{index+1}}楼</span>
                                 <div class="avatar-wrapper">
                                     <img :src="item.author.avatar_url">
                                 </div>
@@ -112,6 +112,7 @@ export default {
                 })
             }else{
                 this.contentScroll.refresh()
+                this.contentScroll.scrollTo(0,0,0)
             }
         } 
     },
@@ -457,11 +458,67 @@ export default {
                 padding:7px 0 7px 5px;
             }
             .replyPerson-wrapper{
-                border:1px solid red;
+                margin-top:10px;
+                position:relative;
+                border-bottom:1px solid #e6e6e6;
+                .floor{
+                    float:right;
+                    margin:6px 10px 0 0 ;
+                    color:#80bd01;
+                }
                 .avatar-wrapper{
+                    margin:23px 5px 5px 10px;
+                    display:inline-block;
                     img{
-                        width:60px;
-                        height:70px;
+                        width:30px;
+                        height:30px;
+                        border-radius:50%;
+                    }
+                }
+                .name-wrapper{
+                    display:inline-block;
+                    position:relative;
+                    top:-7px;
+                    span{
+                        font-weight:bold;
+                    }
+                }
+                .time-wrapper{
+                    display:inline-block;
+                    position:absolute;
+                    top:39px;
+                    left:47px;
+                    span{
+                        color:gray;
+                    }
+                }
+                .markdown-text{
+                    padding:3px 3px 3px 47px;
+                    p{
+                        a{
+                            color:blue;
+                            text-decoration:none;
+                        }
+                    }
+                }
+                .icon-wrapper{
+                    float:right;
+                    margin:0 10px 10px 0;
+                    .praise-wrapper{
+                        display:inline-block;
+                        width:32px;
+                        i{
+                            color:gray;
+                        }
+                        .num{
+                            color:gray;
+                        }
+                    }
+                    .used-wrapper{
+                        display:inline-block;
+                        i{
+                            color:gray;
+                        }
                     }
                 }
             }

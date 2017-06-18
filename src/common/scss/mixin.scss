@@ -1,7 +1,6 @@
 @mixin border-1px($color) {
     position: relative;
-    &:after,
-    &:before {
+    &:after {
         display: block;
         position: absolute;
         left: 0;
@@ -28,3 +27,8 @@
         background-image: url($url + "@3x.png");
     }
 } //处理不同分辨率的终端的背景图
+.clearfix::after {
+    display: block;
+    content: '';
+    clear: both;
+}
