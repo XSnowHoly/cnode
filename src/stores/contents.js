@@ -138,7 +138,6 @@ const jobModule = {
             state.jobData = [...state.jobData, ...data]
         },
         handleJobPage(state) {
-            console.log(4)
             state.JobPage++
         },
         initJobData(state, data) {

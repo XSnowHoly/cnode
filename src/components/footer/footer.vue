@@ -60,6 +60,7 @@ export default {
         z-index:50;
         text-align:center;
         border-top:2px solid #e6e6e6;
+        height:60px;
         .barItem-wrapper{
             .wrapper{
                 .title-wrapper{
@@ -70,7 +71,6 @@ export default {
                         font-size:24px;
                         width: 24px;
                         min-width: 24px;
-                        height: 24px;
                         margin: 0 auto;
                         color:#757575;
                         font-weight:bold;

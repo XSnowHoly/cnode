@@ -168,7 +168,7 @@ export default {
                     margin:15px 10px 0 15px;
                     .title{
                         font-weight:bold;
-                        font-size:16px;
+                        font-size:14px;
                         text-align:justify;
                     }
                 }

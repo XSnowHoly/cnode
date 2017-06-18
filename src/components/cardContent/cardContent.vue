@@ -67,7 +67,7 @@
                         </ul>
                         <div class="login-wrapper">
                             <p class="login">
-                                你还未登录，请先<a>登录</a>
+                                你还未登录，请先<a @click="toPath">登录</a>
                             </p>
                         </div>
                     </div>
@@ -98,6 +98,9 @@ export default {
     }
   },
   methods:{
+    toPath() {
+        this.$router.push('/my/home')
+    },
     toggle () {
         this.show = !this.show
     },
@@ -457,10 +460,14 @@ export default {
                 border-left:5px solid #80bd01;
                 padding:7px 0 7px 5px;
             }
+            ul{
+                padding-left: 0;
+            }
             .replyPerson-wrapper{
                 margin-top:10px;
                 position:relative;
                 border-bottom:1px solid #e6e6e6;
+                list-style:none;
                 .floor{
                     float:right;
                     margin:6px 10px 0 0 ;
@@ -499,6 +506,10 @@ export default {
                             color:blue;
                             text-decoration:none;
                         }
+                        img{
+                            height: 150px;
+                            width: 100%;
+                        }
                     }
                 }
                 .icon-wrapper{
@@ -519,6 +530,20 @@ export default {
                         i{
                             color:gray;
                         }
+                    }
+                }
+            }
+            .login-wrapper{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                border-top:1px solid #e6e6e6;
+                width:100%;
+                height:200px;
+                .login{
+                    font-size:15px;
+                    a{
+                        color:#80bd01
                     }
                 }
             }
