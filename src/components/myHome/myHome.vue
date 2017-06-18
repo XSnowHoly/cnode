@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="set-wrapper">
-        <div class="new-wrapper">
+        <div class="new-wrapper clearfix">
             <div class="icon-wrapper icon-wrapper1">
                 <i class="iconfont">&#xe60d;</i>
             </div>
@@ -30,7 +30,7 @@
                 <i class="iconfont">&#xe688;</i>
             </div>
         </div>
-        <div class="new-wrapper">
+        <div class="new-wrapper clearfix">
             <div class="icon-wrapper icon-wrapper1">
                 <i class="iconfont">&#xe65f;</i>
             </div>
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="break"></div>    
-        <div class="new-wrapper">
+        <div class="new-wrapper clearfix">
             <div class="icon-wrapper icon-wrapper1">
                 <i class="iconfont">&#xe655;</i>
             </div>
@@ -77,6 +77,7 @@ export default {
         .bg-wrapper{
             position:absolute;
             width:100%;
+            height:560px;
             top:0;
             left:0;
             z-index:-1;

@@ -10,19 +10,16 @@ const userModule = {
     actions: {
         loginUser({ commit }, Accesstoken) {
             let { accesstoken } = Accesstoken;
-            commit('saveUserData',{})
+            // commit('saveUserData',{})
             commit('saveError','')
-            axios.post(`${API}/${accesstoken}`,{
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: `accesstoken=${accesstoken}`
+            axios.post(`${API}/accesstoken`,{
+                accesstoken:`${accesstoken}`
             }).then(res => {
                 if(res.status === 403){
                     commit('saveError','登录失败')
                 }
                 if(res.status === 200){
-                    commit('saveUserData',res.data.data)
+                    commit('saveUserData',res.data)
                 }
             })
         }

@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="login-header clearfix">
-        <div class="icon-wrapper" @click="test">
+        <div class="icon-wrapper" @click="back">
             <i class="iconfont">&#xe600;</i>
         </div>
         <span>登录界面</span>
@@ -12,7 +12,7 @@
                 <input type="text" placeholder="Access Token">
             </div>
             <div class="login-btn">
-                <button class="btn">登录</button>
+                <button class="btn" @click="test">登录</button>
             </div>
         </div>
     </div>
@@ -27,6 +27,12 @@ export default {
   },
   methods: {
       test() {
+        //   this.$router.push('/my/home')
+        this.$store.dispatch('loginUser',{accesstoken: '431c9ad9-1ef4-4d09-903e-fe3fc9c6a784'}).then(()=>{
+            console.log(this.$store.userData)
+        })
+      },
+      back() {
           this.$router.push('/my/home')
       }
   }
