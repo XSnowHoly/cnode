@@ -16,7 +16,7 @@ const userModule = {
                 accesstoken:`${accesstoken}`
             }).then(res => {
                 if(res.status === 403){
-                    commit('saveError','登录失败')
+                    commit('saveError',true)
                 }
                 if(res.status === 200){
                     commit('saveUserData',res.data)
@@ -28,8 +28,8 @@ const userModule = {
         saveUserData (state,data){
             state.userData = data
         },
-        saveError (state,str){
-            state.error = str
+        saveError (state,bol){
+            state.error = bol
         }
     }
 }

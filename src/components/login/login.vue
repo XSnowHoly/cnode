@@ -9,10 +9,13 @@
     <div class="login-body">
         <div class="login-box">
             <div class="input-box">
-                <input type="text" placeholder="Access Token">
+                <md-input-container>
+                    <label>accessToken</label>
+                    <md-input maxlength="40" v-model="token"></md-input>
+                </md-input-container>
             </div>
             <div class="login-btn">
-                <button class="btn" @click="test">登录</button>
+                <button class="btn" @click="login">登录</button>
             </div>
         </div>
     </div>
@@ -23,17 +26,31 @@
 
 export default {
   data() {
-      return {}
+      return {
+          token:'',
+          data:{}
+      }
   },
   methods: {
-      test() {
-        //   this.$router.push('/my/home')
-        this.$store.dispatch('loginUser',{accesstoken: '431c9ad9-1ef4-4d09-903e-fe3fc9c6a784'}).then(()=>{
-            console.log(this.$store.userData)
+      login() { 
+        this.$store.dispatch('loginUser',{accesstoken: `${this.token}`}).then((data)=>{
+            this.token = ''
         })
+
       },
       back() {
           this.$router.push('/my/home')
+      }
+  },
+  computed:{
+    userState() {
+        this.data = this.$store.state.userModule.userData
+        return this.data
+    }
+  },
+  watch:{
+      data() {
+          console.log('w')
       }
   }
 }

@@ -99,7 +99,7 @@ export default {
   },
   methods:{
     toPath() {
-        this.$router.push('/my/home')
+        this.$router.push('/login')
     },
     toggle () {
         this.show = !this.show
@@ -149,7 +149,6 @@ export default {
   mounted () {
     this.$nextTick(()=>{
         this.initScroll()
-        console.log(1)
     })
   },
   computed:{
