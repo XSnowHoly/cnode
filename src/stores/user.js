@@ -24,12 +24,20 @@ const userModule = {
             })
         }
     },
+    getters: {
+        getUserData: state=> {
+            return state.userData
+        }
+    },
     mutations: {
         saveUserData (state,data){
             state.userData = data
         },
         saveError (state,bol){
             state.error = bol
+        },
+        clearUserData (state,data){
+            state.userData = {}
         }
     }
 }

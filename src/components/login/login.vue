@@ -13,9 +13,12 @@
                     <label>accessToken</label>
                     <md-input maxlength="40" v-model="token"></md-input>
                 </md-input-container>
+                <transition name="fade">
+                    <span class="error" v-show="JSON.stringify(getUserData)==='{}'">请输入正确的token</span>
+                </transition>
             </div>
-            <div class="login-btn">
-                <button class="btn" @click="login">登录</button>
+            <div class="login-btn" @click="login">
+                <md-button class="md-raised md-primary">登录</md-button>
             </div>
         </div>
     </div>
@@ -28,7 +31,8 @@ export default {
   data() {
       return {
           token:'',
-          data:{}
+          data:{},
+          fail:false
       }
   },
   methods: {
@@ -36,21 +40,22 @@ export default {
         this.$store.dispatch('loginUser',{accesstoken: `${this.token}`}).then((data)=>{
             this.token = ''
         })
-
       },
       back() {
-          this.$router.push('/my/home')
+          this.$router.go(-1);
       }
   },
   computed:{
-    userState() {
+    getUserData() {
         this.data = this.$store.state.userModule.userData
-        return this.data
+        return  this.data
     }
   },
   watch:{
       data() {
-          console.log('w')
+         if(this.data.success === true){
+            this.$router.go(-1);
+         }
       }
   }
 }
@@ -85,7 +90,7 @@ export default {
             align-items:center;
             .login-box{
                 width:300px;
-                height:150px;
+                height:180px;
                 border:1px solid #fff;
                 background:#fff;
                 border-radius:3px;
@@ -108,16 +113,19 @@ export default {
                     }
                 }
                 .login-btn{
-                     padding:10px;
-                    .btn{
-                        width: 100%;
+                     width: 80%;
+                     margin:0 auto;
+                     text-align:center;
+                    .md-button{
+                        width: 80%;
                         line-height: 38px;
                         border-radius: 5px;
-                        border: 1px solid #76ae01;
                         font-size: 14px;
-                        color: #fff;
-                        background: #80bd01;                        
+                        color: #fff;                   
                     }
+                }
+                .error{
+                    color:#ea2000;
                 }
             }
         }

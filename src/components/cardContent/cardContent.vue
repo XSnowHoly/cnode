@@ -65,9 +65,12 @@
                                 </div>
                             </li>
                         </ul>
-                        <div class="login-wrapper">
-                            <p class="login">
+                        <div class="login-wrapper" >
+                            <p class="login" v-show="!getUserData.success">
                                 你还未登录，请先<a @click="toPath">登录</a>
+                            </p>
+                            <p class="public" v-show="getUserData.success">
+                                <router-link to="/topic/create">发表你的言论</router-link>
                             </p>
                         </div>
                     </div>
@@ -152,6 +155,10 @@ export default {
     })
   },
   computed:{
+    getUserData() {
+          let data = this.$store.getters.getUserData
+          return data
+    },
     createTime() {
         let createTime = Date.parse(this.cardData.create_at);
         let nowTime = Date.now();
@@ -536,7 +543,6 @@ export default {
                 display:flex;
                 justify-content: center;
                 align-items: center;
-                border-top:1px solid #e6e6e6;
                 width:100%;
                 height:200px;
                 .login{
@@ -544,6 +550,12 @@ export default {
                     a{
                         color:#80bd01
                     }
+                }
+                .public{
+                    font-size:15px;
+                    a{
+                        color:#80bd01
+                    }                    
                 }
             }
         }

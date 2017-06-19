@@ -85,7 +85,9 @@ export default {
                 if(Math.abs(pos.y) > cardScroll && !this.loading){
                     this.loading = true;
                     this.refreshScroll()
-                    this.getData()
+                    setTimeout(()=>{
+                        this.getData()
+                    },700)
                 }
             })
         },
@@ -93,9 +95,9 @@ export default {
             if(this.hasData(type)){
                 this.data = this.$store.state.allModule.allData
             }else{
-                let url = `https://cnodejs.org/api/v1/topics?page=${this.page}&limit=15`
+                let url = `https://cnodejs.org/api/v1/topics?page=${this.page}&limit=6`
                 if(type){
-                    url = `https://cnodejs.org/api/v1/topics?page=${this.page}&limit=15&tab=${type}`
+                    url = `https://cnodejs.org/api/v1/topics?page=${this.page}&limit=6&tab=${type}`
                 }
                 this.$http.get(url).then(res=>{
                     if(res.status === 200){

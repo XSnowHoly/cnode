@@ -6,20 +6,26 @@
     <div class="home-wrapper">
         <div class="flex-wrapper">
             <div class="login-wrapper">
-                <div class="avatar-wrapper">
-                    <img src="../../common/img/login.jpg">
+                <div class="avatar-wrapper" v-show="getAvatar"  @click="showUserDetail">
+                    <img :src="getAvatar">
+                </div>
+                <div class="avatar-wrapper" v-show="!getAvatar">
+                    <img src="../../common/img/login.jpg" alt="">
                 </div>
                 <div class="name-wrapper">
-                    <h1 class="name">未知的人类</h1>
+                    <h1 class="name">{{getName}}</h1>
                 </div>
-                <div class="login">
-                    <div class="" @click="test">登录</div>
+                <div class="login" v-show="JSON.stringify(getUserData) === '{}'">
+                    <div class="" @click="login">登录</div>
+                </div>
+                <div class="loout login" v-show="JSON.stringify(getUserData) !== '{}'">
+                    <div class="" @click="SignOut ">登出</div>
                 </div>
             </div>
         </div>
     </div>
     <div class="set-wrapper">
-        <div class="new-wrapper clearfix">
+        <div class="new-wrapper clearfix"  @click="readNews">
             <div class="icon-wrapper icon-wrapper1">
                 <i class="iconfont">&#xe60d;</i>
             </div>
@@ -30,12 +36,12 @@
                 <i class="iconfont">&#xe688;</i>
             </div>
         </div>
-        <div class="new-wrapper clearfix">
+        <div class="new-wrapper clearfix" @click="publicTopic">
             <div class="icon-wrapper icon-wrapper1">
                 <i class="iconfont">&#xe65f;</i>
             </div>
             <div class="desc">
-                <p>发表主题</p>
+                <p >发表主题</p>
             </div>
             <div class="icon-wrapper icon-wrapper2">
                 <i class="iconfont">&#xe688;</i>
@@ -54,19 +60,54 @@
             </div>
         </div>            
     </div>
+    <userDetail ref="userDetail" :data="getUserData" v-if="getUserData.success"></userDetail>
   </div>
 </template>
 
 <script>
+import userDetail from '../userDetail/userDetail'
 
 export default {
   data () {
       return {}
   },
   methods:{
-      test() {
+      login() {
           this.$router.push('/login')
+      },
+      SignOut() {
+          this.$store.commit('clearUserData')
+      },
+      publicTopic() {
+          this.$router.push('/topic/create')
+      },
+      readNews() {
+          this.$router.push('/my/messages')
+      },
+      showUserDetail() {
+          this.$refs.userDetail.showDetail()
       }
+  },
+  computed:{
+      getUserData() {
+          let data = this.$store.getters.getUserData
+          return data
+      },
+      getAvatar() {
+          let {avatar_url} = this.getUserData;
+          return avatar_url
+      },
+      getName() {
+          let {loginname} = this.getUserData;
+          if(loginname){
+             return loginname
+          }else{
+            return '未知的人类'
+          }
+      }
+  },
+  components:{
+      userDetail
   }
 }
 </script>
@@ -102,6 +143,7 @@ export default {
                             width:80px;
                             height:80px;
                             border-radius:50%;
+                            border:3px solid #fff;
                         }
                     }
                     .name-wrapper{
