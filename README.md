@@ -40,6 +40,7 @@
 2. 优化router
 3. 优化vuex
 4. 加入transition效果
+5. debug
 
 ## 运行项目
 
@@ -59,3 +60,6 @@ npm run build
 # step4如果需要打包部署
 npm run build --report
 ```
+访问 http://127.0.0.1:8080
+
+然后登录草料获取二维码，在手机上运行
