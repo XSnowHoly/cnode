@@ -1,6 +1,7 @@
 # vue-cnode
 
-> cnode app
+> 前言 
+项目灵感的最初来源是@shinygang来自的Vue-cnodejs， 感谢cnodejs社区提供的API。 github：https://github.com/lzxb/vue-cnode
 
 ## Build Setup
 
