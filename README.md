@@ -10,23 +10,21 @@
 # 运行效果GIF
 
 ![效果1](./static/gif/cnode1.gif)
-
-
-
+</br>
 ![效果2](./static/gif/cnode3.gif)
 
-#IPHONE6上的效果图
+# IPHONE6上的效果图
 
 ![图片1](./static/gif/IMG1.PNG)
-
+</br>
 ![图片2](./static/gif/IMG2.PNG)
-
+</br>
 ![图片3](./static/gif/IMG3.PNG)
-
+</br>
 ![图片4](./static/gif/IMG4.PNG)
-
+</br>
 ![图片5](./static/gif/IMG5.PNG)
-
+</br>
 ![图片6](./static/gif/IMG6.PNG)
 
 ## 运行项目
