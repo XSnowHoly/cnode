@@ -9,9 +9,9 @@
 
 # 运行效果图
 
-![效果1](./static/gif/cnode1.gif1)
+![效果1](./static/gif/cnode1.gif)
 
-![效果2](./static/gif/cnode1.gif3)
+![效果2](./static/gif/cnode3.gif)
 
 ## 运行项目
 
