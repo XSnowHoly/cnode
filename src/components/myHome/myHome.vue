@@ -190,7 +190,7 @@ export default {
                 }
                 .icon-wrapper2{
                     float:right;
-                    padding:12px 10px 0 0;
+                    padding:12px 10px 12px 0;
                 }
                 .desc{
                      display:inline-block;

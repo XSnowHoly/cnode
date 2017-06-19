@@ -1,7 +1,9 @@
 <template>
   <div id="app">
   <transition name="move"> 
+  <keep-alive>
     <router-view class="view"></router-view>
+  </keep-alive>
   </transition>  
     <c-footer></c-footer>
   </div>

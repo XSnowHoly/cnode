@@ -10,7 +10,7 @@
                 <div v-else v-for="(item,index) of handleData" key="index" @click="selectCard(item)">
                     <v-card :cardData="handleData[index]"></v-card>
                 </div>
-                <div v-if="loading" class="loading">
+                <div v-show="loading" class="loading">
                     <md-spinner :md-size="40" md-indeterminate ></md-spinner>
                 </div>
             </div>    
@@ -217,6 +217,7 @@ export default {
             }
             .loading{
                 width:100%;
+                height:30px;
                 text-align:center;
             }
         }

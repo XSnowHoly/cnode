@@ -6,7 +6,7 @@
                     <i class="iconfont">&#xe600;</i>
                 </div>
                 <div class="word-wrapper">
-                    <p class="word">主题</p>
+                    主题
                 </div>
             </div>
             <div class="content-wrapper" v-show="!loading" ref="content">
@@ -201,9 +201,10 @@ export default {
         }        
         .cardContent-header{    
             width:100%;
+            height:50px;
+            line-height:50px;
             @include border-1px(#e6e6e6);
             text-align:center;
-            padding:15px 0;
             .icon-wrapper{
                 display:inline-block;
                 text-align:center;
@@ -219,9 +220,7 @@ export default {
             .word-wrapper{
                 display:inline-block;
                 margin-right:30px;
-                p{
-                    font-size:20px;
-                }
+                font-size:20px;
             }
         }
         .load-wrapper{
@@ -543,6 +542,7 @@ export default {
                 display:flex;
                 justify-content: center;
                 align-items: center;
+                border-top:1px solid #e6e6e6;
                 width:100%;
                 height:200px;
                 .login{
@@ -554,8 +554,8 @@ export default {
                 .public{
                     font-size:15px;
                     a{
-                        color:#80bd01
-                    }                    
+                        color:#80bd01;
+                    }
                 }
             }
         }
