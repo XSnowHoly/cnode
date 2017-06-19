@@ -2,12 +2,8 @@
     <transition name="move">
         <div class="userDetail" v-if="show">
             <div class="userDetail-header clearfix">
-                <div class="icon-wrapper" @click="showDetail">
-                    <i class="iconfont">&#xe600;</i>
-                </div>
-                <div class="word-wrapper">
-                    <p class="word">用户详细信息</p>
-                </div>
+                <i class="iconfont icon-wrapper" @click="showDetail">&#xe600;</i>
+                <div class="word">用户详细信息</div>
             </div>
             <div class="userDatail-content">
                 <div class="avatar-wrapper">
@@ -102,10 +98,12 @@ export default {
         .userDetail-header{
             background:#fff;
             text-align:center;
+            height:50px;
+            line-height:50px;
             @include border-1px(#e6e6e6);
             .icon-wrapper{
                 float:left;
-                margin-top:8px;
+                margin-top:5px;
                 width:40px;
                 height:40px;
                 border-radius:50%;
@@ -113,18 +111,14 @@ export default {
                 text-align:center;
                 line-height:37px;
                 margin-left:10px;
-                i{
-                    font-size:20px;
-                    border-radius:50%;
-                }
+                font-size:20px;
+                border-radius:50%;
             }
-            .word-wrapper{
+            div{
                 display:inline-block;
                 text-align:center;
                 margin-right:30px;
-                p{
-                    font-size:18px; 
-                }
+                 font-size:18px; 
             }
         }
         .userDatail-content{
