@@ -5,7 +5,7 @@
 
 # 技术栈
 
->Vue2.0+Vue-router+axios+Vuex+material-UI+scss+webpack+better-scroll+es6/7
+>Vue2.0 + Vue-router + axios + Vuex + material-UI + scss + webpack + better-scroll + es6/7
 
 ### 运行效果GIF
 
