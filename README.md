@@ -13,12 +13,6 @@
 </br>
 ![效果2](./static/gif/cnode3.gif)
 
-### IPHONE6上的效果图
-
-![图片1](./static/gif/IMG1.PNG)
-
-![图片2](./static/gif/IMG2.PNG)
-
 
 ### 功能
 - [x] 首页列表，上拉加载
@@ -40,7 +34,7 @@
 2. 优化router
 3. 优化vuex
 4. 加入transition效果
-5. debug
+5. 修改部分存在的BUG
 
 ## 运行项目
 
